@@ -1,0 +1,29 @@
+
+<%- include('templates/header')-%>
+<h1>Add News</h1>
+<br>
+
+<div>
+    <form method="POST" action="/addnews">
+        <div class="mb-3">
+            <label for="title" class="form-label">Judul</label>
+            <input type="text" class="form-control" name="title" id="title"  placeholder="title">
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label">Gambar</label>
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" name="image" id="image">
+            </div>
+        </div>
+        <div class="mb-3">
+          <label for="berita" class="form-label">Berita</label>
+          <textarea class="form-control" name="berita" id="berita" rows="9"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Posting Berita</button>
+      </form>
+</div>
+
+<%- include('templates/footer') -%>
+
