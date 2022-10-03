@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+  </head>
+
+  <body>
+
+    <div class="container">
+      <h1>My Form</h1>
+      <p><%= title %></p>
+      <br>
+      <form method="POST" action="/editproduct/<%=products.id %>">
+        <div class="mb-3">
+            <label for="nama" class="form-label">Nama Produk</label>
+            <input type="text" class="form-control" value="<%=products.name %>" name="name" id="name"  placeholder="nama produk">
+          </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Quantitas</label>
+          <input type="text" class="form-control" value="<%=products.quantity %>" name="quantity" id="quantity"  placeholder="nama produk">
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Harga</label>
+            <input type="text" class="form-control" value="<%=products.price %>" name="price" id="price"  placeholder="nama produk">
+        </div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+        <a href="/product" class="btn btn-warning">Cancel </a>
+      </form>
+    </div>
+    
+  </body>
+</html>

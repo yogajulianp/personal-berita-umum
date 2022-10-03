@@ -1,0 +1,25 @@
+
+<%- include('templates/header')-%>
+<h1>Produk Detail</h1>
+<br>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%=products.name %></h5>
+    <h6 class="card-subtitle mb-2 text-muted">Produk Id: <%=products.id %></h6>
+    <p href="#" class="card-link">Quantity: <%=products.quantity %> </p>
+    <p href="#" class="card-link">Price: <%=products.price %> </p>
+  </div>
+</div>
+
+<div>
+  <a href="/product" class="btn btn-primary">Back</a>
+  &nbsp;
+  <a href="/editproduct/<%=products.id %>"" class="btn btn-secondary">Edit</a>
+  &nbsp;
+  <a href="/deleteproduct/<%=products.id %>" class="btn btn-danger">Delete</a>
+
+</div>
+
+<%- include('templates/footer') -%>
+
