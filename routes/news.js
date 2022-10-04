@@ -42,7 +42,7 @@ router.get('/addnews',auth, function(req, res, next) {
 router.post('/addnews',auth, function(req, res, next) {
   var news = {
     title: req.body.title,
-    image: req.body.image,
+    image: req.file,
     berita: req.body.berita,
   }
   News.create(news)
