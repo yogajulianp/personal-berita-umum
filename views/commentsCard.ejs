@@ -1,32 +1,28 @@
 <%- include('templates/header')-%>
 <h1>Comment</h1>
 <p><%= title %></p>
-<br>
+<br />
 <div>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">No</th>
-            <th scope="col">Nama</th>
-            <th scope="col">Komentar</th>
-         
-          </tr>
-        </thead>
-        <tbody>
-            <%comments.forEach(function(item) {%>
-          <tr>
-            <th scope="row"><%=item.id%></th>
-            <td><%=item.name%></td>
-            <td><%=item.comment%></td>
-
-          </tr>
-          <%} );%>
-          <tr>
-            <a href="/" class="btn btn-primary">Back</a>
-          </tr>
-        </tbody>
-       
-      </table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Nama</th>
+        <th scope="col">Komentar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%comments.forEach(function(item) {%>
+      <tr>
+        <th scope="row"><%=item.id%></th>
+        <td><%=item.name%></td>
+        <td><%=item.comment%></td>
+      </tr>
+      <%} );%>
+      <tr>
+        <a href="/" class="btn btn-primary">Back</a>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <%- include('templates/footer') -%>
-

@@ -1,0 +1,47 @@
+<%- include('templates/header')-%>
+<div class="container">
+  <h1>Edit News</h1>
+  <br />
+
+  <div>
+    <form method="POST" action="/editnews/<%=news.id %>">
+      <div class="mb-3">
+        <label for="title" class="form-label">Judul</label>
+        <input
+          type="text"
+          class="form-control"
+          value="<%=news.title %>"
+          name="title"
+          id="title"
+          placeholder="title"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Gambar</label>
+        <input
+          type="text"
+          class="form-control"
+          value="<%=news.image %>"
+          name="image"
+          id="image"
+          placeholder="image"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="berita" class="form-label">Berita</label>
+        <textarea
+          class="form-control"
+          value="<%=news.berita %>"
+          name="berita"
+          id="berita"
+          rows="9"
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Edit Berita</button>
+    </form>
+  </div>
+</div>
+
+<%- include('templates/footer') -%>

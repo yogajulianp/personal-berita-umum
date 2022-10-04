@@ -1,0 +1,26 @@
+
+<%- include('templates/header')-%>
+<h1>Berita Detail</h1>
+<br>
+
+<div class="card mb-3" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%=news.title%></h5>
+      <img src="../public/images/foto1.jpg" class="card-img-top" alt="gambar">
+      <p class="card-text"><%=news.gambar%></p>
+      <textarea class="card-text"><%=news.berita%></textarea>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+
+<div>
+  <a href="/" class="btn btn-primary">Back</a>
+  &nbsp;
+  <a href="/editnews/<%=news.id %>"" class="btn btn-secondary">Edit</a>
+  &nbsp;
+  <a href="/deleteproduct/<%=news.id %>" class="btn btn-danger">Delete</a>
+
+</div>
+
+<%- include('templates/footer') -%>
+
