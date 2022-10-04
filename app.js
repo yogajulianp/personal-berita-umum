@@ -5,10 +5,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var session = require('express-session')
+const multer  = require('multer')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var newsRouter= require('./routes/news')
+var commentsRouter = require('./routes/comment')
 
 var app = express();
 
@@ -27,6 +29,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+//app.use(multer({dest: 'images'}).single('image'))
 app.use(express.static(path.join(__dirname, 'public')));
 
 const db = require("./models");
@@ -38,9 +41,10 @@ db.sequelize.sync()
     console.log("error: " + err.message);
 })
 
-app.use('/', indexRouter);
+app.use('/product', indexRouter);
 app.use('/users', usersRouter);
-app.use('/news', newsRouter);
+app.use('/', newsRouter);
+app.use('/comments', commentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

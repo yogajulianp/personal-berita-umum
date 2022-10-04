@@ -21,14 +21,14 @@
             <td><%=item.quantity%></td>
             <td><%=item.price%></td>
             <td>    
-                <a href="/productdetail?id=<%=item.id%> " class="btn btn-info">Detail</a>
+                <a href="/product/productdetail?id=<%=item.id%> " class="btn btn-info">Detail</a>
                 &nbsp;
-                <a href="/detail/<%=item.id%> " class="btn btn-info">Detail 2</a>
+                <a href="/product/detail/<%=item.id%> " class="btn btn-info">Detail 2</a>
             </td>
           </tr>
           <%} );%>
           <tr>
-            <a href="/addProduct" class="btn btn-primary">Add Produk </a>
+            <a href="/product/addProduct" class="btn btn-primary">Add Produk </a>
           </tr>
         </tbody>
        

@@ -1,0 +1,32 @@
+
+<%- include('templates/header')-%>
+<h1>Berita Portal</h1>
+<br>
+
+<div>
+    <div class >
+        <%news.forEach(function(item) {%>
+        <div class="mb-3">
+            <label for="title" class="form-label">Judul</label>
+            <input type="text" class="form-control" name="title" id="title"  placeholder="title">
+        </div>
+
+        <<div class="card mb-3">
+            <img src="<%=item.name%>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%=item.name%></h5>
+              <p class="card-text"><%=item.name%></p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        <div class="mb-3">
+          <label for="berita" class="form-label">Berita</label>
+          <textarea class="form-control" name="berita" id="berita" rows="9"></textarea>
+        </div>
+
+        
+    </div>
+</div>
+
+<%- include('templates/footer') -%>
+

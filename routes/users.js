@@ -47,7 +47,7 @@ router.post('/register', function(req, res, next) {
   }
   User.create(users)
   .then(addData => {
-    res.redirect('/login')
+    res.redirect('/product/login')
    
   })
   .catch(err => {

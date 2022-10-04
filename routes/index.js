@@ -108,7 +108,7 @@ router.post('/addproduct',auth, function(req, res, next) {
   }
   Product.create(products)
   .then(addData => {
-    res.redirect('/product')
+    res.redirect('/product/product')
    
   })
   .catch(err => {
@@ -128,7 +128,7 @@ router.get('/deleteproduct/:id',auth, function(req, res, next) {
     where: { id: id}
   })
   .then(num => {
-    res.redirect('/product')
+    res.redirect('/product/product')
     // if(num>0) {
     //   res.redirect('/product')
     // } else {
@@ -161,7 +161,7 @@ router.get('/editproduct/:id',auth, function(req, res, next) {
 
     } else {
       // http 404 not found
-      res.redirect('/product')
+      res.redirect('/product/product')
     }
   })
   .catch(err => {
@@ -179,7 +179,7 @@ router.post('/editproduct/:id',auth, function(req, res, next) {
     where: { id: id}
   })
   .then(num => {
-    res.redirect('/product'); 
+    res.redirect('/product/product'); 
   })
   .catch(err => {
     res.json({
@@ -207,10 +207,10 @@ router.post('/register', function(req, res, next) {
   }
   User.create(users)
   .then(addData => {
-    res.redirect('/login');
+    res.redirect('/product/login');
   })
   .catch(err => {
-    res.redirect('/register');
+    res.redirect('/product/register');
   });
 });
 
@@ -233,22 +233,22 @@ router.post('/login', function(req, res, next) {
 				req.session.islogin = true;
         //console.log("req.session setelah diisi data:" + req.session)
 
-				res.redirect('/product');
+				res.redirect('/product/product');
 			}else{
-				res.redirect('/login');
+				res.redirect('/product/login');
 			}
 		}else {
-			res.redirect('/login');
+			res.redirect('/product/login');
 		}
 	})
 	.catch(err => {
-	  	res.redirect('/login');
+	  	res.redirect('/product/login');
 	});	
 });  
 
 router.get('/logout', function(req, res, next) {
 	req.session.destroy();
-	res.redirect('/login');
+	res.redirect('/product/login');
 });  
 
 module.exports = router;

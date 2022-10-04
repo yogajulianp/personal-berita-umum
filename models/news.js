@@ -6,13 +6,16 @@ module.exports = (sequelize, Sequelize) => {
         //     primaryKey: true
         // },
         title: {
-			type: Sequelize.STRING
+			type: Sequelize.STRING,
+            allowNull: false
 		},
 		image: {
-			type: Sequelize.STRING
+			type: Sequelize.STRING,
+            allowNull: false
 		},
 		berita: {
-			type: Sequelize.STRING
+			type: Sequelize.STRING,
+            allowNull: false
 		}		
         
         // created: {

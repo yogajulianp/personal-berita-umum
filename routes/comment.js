@@ -6,21 +6,39 @@ const db = require('../models');
 const Comment = db.comments;
 const Op = db.Sequelize.Op;
 
-//add komentar
-router.get('/addkomentar',auth, function(req, res, next) {
-  res.render('addKomentar', { title: 'Tambah Product' });
+//get komentar
+router.get('/', function(req, res, next) {
+  Comment.findAll()
+  .then(data => {
+    res.render('commentsCard', { 
+      title: 'Komentar',
+      comments: data,
+     });
+  })
+  
+  .catch(err => {
+    res.render('commentsCard', { 
+      title: 'Komentar',
+      comments: [],
+     });
+  })
+});
+
+//addKomentar
+router.get('/add', function(req, res, next) {
+  res.render('addComments', { title: 'Tambah Komentar' });
 });
 
 //add Komentar
-router.post('/addkomentar',auth, function(req, res, next) {
-  var products = {
+router.post('/add', function(req, res, next) {
+  var comments = {
     name: req.body.name,
     comment: req.body.comment,
 
   }
-  Comment.create(products)
+  Comment.create(comments)
   .then(addData => {
-    res.redirect('/product')
+    res.redirect('/comments')
    
   })
   .catch(err => {

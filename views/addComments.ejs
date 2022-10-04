@@ -8,10 +8,10 @@
   <body>
 
     <div class="container">
-      <h1>My Form</h1>
+      <h1>Komentar</h1>
       <p><%= title %></p>
       <br>
-      <form method="POST" action="/addkomentar">
+      <form method="POST" action="/comments/add">
         <div class="mb-3">
             <label for="nama" class="form-label">Nama</label>
             <input type="text" class="form-control" name="name" id="name"  placeholder="nama Anda">
@@ -20,8 +20,8 @@
           <label for="comment" class="form-label">Isi komentar</label>
           <input type="text" class="form-control" name="comment" id="comment"  placeholder="isi komentar">
         </div>
-        <button href="/product/" type="submit" class="btn btn-primary">Tambah</button>
-        <a href="/product" class="btn btn-warning">Cancel </a>
+        <button href="/comments" type="submit" class="btn btn-primary">Tambah Komentar</button>
+        <a href="/comments"" class="btn btn-warning">Cancel </a>
       </form>
     </div>
     

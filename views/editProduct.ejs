@@ -11,7 +11,7 @@
       <h1>My Form</h1>
       <p><%= title %></p>
       <br>
-      <form method="POST" action="/editproduct/<%=products.id %>">
+      <form method="POST" action="/product/editproduct/<%=products.id %>">
         <div class="mb-3">
             <label for="nama" class="form-label">Nama Produk</label>
             <input type="text" class="form-control" value="<%=products.name %>" name="name" id="name"  placeholder="nama produk">
@@ -25,7 +25,7 @@
             <input type="text" class="form-control" value="<%=products.price %>" name="price" id="price"  placeholder="nama produk">
         </div>
         <button type="submit" class="btn btn-primary">Edit</button>
-        <a href="/product" class="btn btn-warning">Cancel </a>
+        <a href="/product/product" class="btn btn-warning">Cancel </a>
       </form>
     </div>
     
