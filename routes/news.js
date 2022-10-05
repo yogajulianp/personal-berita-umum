@@ -14,24 +14,24 @@ const auth = require("../auth");
 // });
 
 //get all news
-router.get("/", function (req, res, next) {
-  News.findAll()
-    .then((data) => {
-      res.render("news", {
-        title: "Daftar Berita Saat ini",
-        news: data,
-      });
-    })
-    .catch((err) => {
-      res.render("news", {
-        title: "Daftar Berita Saat ini",
-        news: [],
-      });
-    });
-});
+// router.get("/", function (req, res, next) {
+//   News.findAll()
+//     .then((data) => {
+//       res.render("news", {
+//         title: "Daftar Berita Saat ini",
+//         news: data,
+//       });
+//     })
+//     .catch((err) => {
+//       res.render("news", {
+//         title: "Daftar Berita Saat ini",
+//         news: [],
+//       });
+//     });
+// });
 
 //get all news
-router.get("/dasboard", function (req, res, next) {
+router.get("/", function (req, res, next) {
   News.findAll()
     .then((data) => {
       res.render("news", {
@@ -106,18 +106,49 @@ router.get("/detail/:id", function (req, res, next) {
 //add Berita
 
 router.get("/addnews", auth, function (req, res, next) {
-  res.render("addNewsDraft", { title: "Tambah Berita" });
+  res.render("addNews", {
+    pageTitle: 'Tambah Berita',
+    path: 'addnews',
+    editing: false,
+    hasError: false,
+    errorMessage: null,
+    // validationErrors: []
+  });
 });
 
 //add Berita
 router.post("/addnews", auth, function (req, res, next) {
   var news = {
     title: req.body.title,
-    image: req.body.image,
+    image: req.file,
+    berita: req.body.berita,
+  };
+  console.log("news image: " + news.image)
+  if (!news.image) {
+    return res.status(422).render("addNews", {
+      pageTitle: 'Tambah Berita',
+      path: 'addnews',
+      editing: false,
+      hasError: true,
+      news : {
+        title: req.body.title,
+        berita: req.body.berita,
+      },
+      errorMessage: 'file yang dikirim bukan gambar, harus format png/jpeg/jpg',
+      // validationErrors: []
+    });
+  }
+  var image = news.image.path
+  var image2 = image.replace(/\\/g, "/")
+
+  news = {
+    title: req.body.title,
+    image: image2,
     berita: req.body.berita,
   };
   News.create(news)
     .then((addData) => {
+
       res.redirect("/");
     })
     .catch((err) => {

@@ -7,9 +7,11 @@ module.exports = (sequelize, Sequelize) => {
     // },
     name: {
       type: Sequelize.STRING,
+      allowNull: false
     },
     comment: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
+      allowNull: false
     },
 
     // created: {

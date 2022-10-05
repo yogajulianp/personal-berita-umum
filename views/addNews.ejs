@@ -3,6 +3,9 @@
 <br />
 
 <div>
+  <% if (errorMessage) { %>
+    <div class="user-message user-message--error"><%= errorMessage %></div>
+  <% } %>
   <form method="POST" action="/addnews" enctype="multipart/form-data">
     <div class="mb-3">
       <label for="title" class="form-label">Judul</label>
@@ -12,13 +15,19 @@
         name="title"
         id="title"
         placeholder="title"
+        value="<% if ( hasError) { %><%= news.title %><% } %>"
       />
     </div>
 
     <div class="mb-3">
       <label for="image" class="form-label">Gambar</label>
       <div class="input-group mb-3">
-        <input type="file" class="form-control" name="image" id="image" />
+        <input 
+        type="file" 
+        accept="image/png, image/jpeg, image/jpg"
+        class="form-control" 
+        name="image" 
+        id="image" />
       </div>
     </div>
     <div class="mb-3">
@@ -28,7 +37,7 @@
         name="berita"
         id="berita"
         rows="9"
-      ></textarea>
+      ><% if (hasError) { %><%= news.berita %><% } %></textarea>
     </div>
 
     <button type="submit" class="btn btn-primary">Posting Berita</button>

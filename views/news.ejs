@@ -10,9 +10,9 @@
       <div class="card-body">
         <h5 class="card-title"><%=item.title%></h5>
         <img
-          src="../public/images/foto1.jpg"
+          src="../<%= item.image %>"
           class="card-img-top"
-          alt="gambar"
+          alt="<%=item.title%>"
         />
         <p class="card-text"><%=item.berita%></p>
         <p class="card-text">

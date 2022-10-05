@@ -4,13 +4,13 @@
   <br />
 
   <div>
-    <form method="POST" action="/editnews/<%=news.id %>">
+    <form method="POST" action="/editnews/<%=news.id %>" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="title" class="form-label">Judul</label>
         <input
           type="text"
           class="form-control"
-          value="<%=news.title %>"
+          value="<%= news.title %>"
           name="title"
           id="title"
           placeholder="title"
@@ -20,7 +20,8 @@
       <div class="mb-3">
         <label for="title" class="form-label">Gambar</label>
         <input
-          type="text"
+          type="file"
+          accept="image/png, image/jpeg, image/jpg"
           class="form-control"
           value="<%=news.image %>"
           name="image"
@@ -36,7 +37,7 @@
           name="berita"
           id="berita"
           rows="9"
-        ></textarea>
+        ><%= news.berita %></textarea>
       </div>
 
       <button type="submit" class="btn btn-primary">Edit Berita</button>

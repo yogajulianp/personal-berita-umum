@@ -219,7 +219,7 @@ router.post("/login", function (req, res, next) {
           req.session.islogin = true;
           //console.log("req.session setelah diisi data:" + req.session)
 
-          res.redirect("/dasboard");
+          res.redirect("/");
         } else {
           res.redirect("/product/login");
         }

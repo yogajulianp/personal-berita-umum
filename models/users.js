@@ -7,19 +7,19 @@ module.exports = (sequelize, Sequelize) => {
     // },
     name: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: false
     },
     email: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: false
     },
     username: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: false
     },
     password: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: false
     },
 
     // created: {

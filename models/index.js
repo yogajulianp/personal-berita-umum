@@ -24,4 +24,7 @@ db.users = require("./users")(sequelize, Sequelize);
 db.news = require("./news")(sequelize, Sequelize);
 db.comments = require("./coments")(sequelize, Sequelize);
 
+db.news.hasMany(db.comments, {as: "comments"})
+db.comments.belongsTo(db.news,{foreignKey:'idnews'});
+
 module.exports = db;

@@ -6,21 +6,18 @@ module.exports = (sequelize, Sequelize) => {
     //     primaryKey: true
     // },
     title: {
-      type: Sequelize.STRING,
-      allowNull: false,
+      type: Sequelize.TEXT,
     },
     image: {
       type: Sequelize.STRING,
-      allowNull: false,
     },
     berita: {
-      type: Sequelize.STRING,
-      allowNull: false,
+      type: Sequelize.TEXT,
     },
-
-    // created: {
-    //     type: Sequelize.DATE
-    // },
+  },{
+    paranoid: true,
+    // If you want to give a custom name to the deletedAt column
+    deletedAt: 'destroyTime',
   });
   return News;
 };
