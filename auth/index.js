@@ -6,7 +6,9 @@ const auth = function (req, res, next) {
     return next();
   } else {
     // belum login
-    return res.sendStatus(401);
+    return res.status(401).render('alertNoLogin', {
+      pageTitle: 'Belum Login',
+    });
   }
 };
 

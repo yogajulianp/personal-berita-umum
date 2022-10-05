@@ -1,9 +1,12 @@
 <%- include('templates/header')-%>
 <div class="container">
-  <h1>Edit News</h1>
+  <h1><%= pageTitle %></h1>
   <br />
 
   <div>
+    <% if (errorMessage) { %>
+      <div class="user-message user-message--error"><%= errorMessage %></div>
+    <% } %>
     <form method="POST" action="/editnews/<%=news.id %>" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="title" class="form-label">Judul</label>
@@ -41,6 +44,8 @@
       </div>
 
       <button type="submit" class="btn btn-primary">Edit Berita</button>
+      &nbsp;
+      <a href="/" class="btn btn-warning">Cancel </a>
     </form>
   </div>
 </div>

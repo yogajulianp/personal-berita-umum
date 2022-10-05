@@ -6,8 +6,6 @@
 <div class="card mb-3" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title"><%=news.title%></h5>
-      <img src="/<%= news.image %>" class="card-img-top" alt="<%=news.title %>">
- 
       <div style="max-height:350px; overflow:hidden;">
         <img class="img-fluid " src="/<%= news.image %>" alt="<%=news.title %>" >
 
@@ -22,7 +20,7 @@
   &nbsp;
   <a href="/editnews/<%=news.id %>"" class="btn btn-secondary">Edit</a>
   &nbsp;
-  <a href="/deleteproduct/<%=news.id %>" class="btn btn-danger">Delete</a>
+  <a href="/delete/<%=news.id %>" class="btn btn-danger">Delete</a>
 
 </div>
 

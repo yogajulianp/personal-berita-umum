@@ -232,6 +232,10 @@ router.post("/login", function (req, res, next) {
     });
 });
 
+router.get("/belumLogin", function (req, res, next) {
+  res.render("alertNoLogin", { title: "Belum Login" });
+});
+
 router.get("/logout", function (req, res, next) {
   req.session.destroy();
   res.redirect("/product/login");
