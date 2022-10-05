@@ -34,10 +34,10 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var indexRouter = require("./routes");
+var usersRouter = require("./routes/user");
 var newsRouter = require("./routes/news");
-var commentsRouter = require("./routes/comment");
+
 
 var app = express();
 
@@ -74,10 +74,11 @@ db.sequelize
     console.log("error: " + err.message);
   });
 
-app.use("/product", indexRouter);
-app.use("/users", usersRouter);
+
 app.use("/", newsRouter);
-app.use("/comments", commentsRouter);
+app.use("/users", usersRouter);
+app.use("/index", indexRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

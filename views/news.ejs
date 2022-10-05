@@ -6,8 +6,8 @@
   <div class="grid text-center">
     <%news.forEach(function(item) {%>
 
-    <div class="card mb-3">
-      <div class="card-body">
+    <div class="card mb-3" style="width: 24rem;">
+      <div class="card-body" style="max-height:350px; overflow:hidden;">
         <h5 class="card-title"><%=item.title%></h5>
         <img
           src="/<%= item.image %>"
@@ -16,7 +16,7 @@
         />
         <p class="card-text"><%=item.berita%></p>
         <p class="card-text">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <small class="text-muted">Terakhir di update pada <%= item.createdAt.toString().substring(0, 24) %></small>
         </p>
       </div>
       &nbsp;

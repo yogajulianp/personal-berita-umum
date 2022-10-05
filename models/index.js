@@ -19,7 +19,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.products = require("./products")(sequelize, Sequelize);
 db.users = require("./users")(sequelize, Sequelize);
 db.news = require("./news")(sequelize, Sequelize);
 db.comments = require("./coments")(sequelize, Sequelize);

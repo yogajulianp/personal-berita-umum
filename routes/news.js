@@ -5,31 +5,9 @@ const db = require("../models");
 const News = db.news;
 const Op = db.Sequelize.Op;
 
-var bcrypt = require("bcryptjs");
 const auth = require("../auth");
 const news = require("../models/news");
 
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
-
-//get all news
-// router.get("/", function (req, res, next) {
-//   News.findAll()
-//     .then((data) => {
-//       res.render("news", {
-//         title: "Daftar Berita Saat ini",
-//         news: data,
-//       });
-//     })
-//     .catch((err) => {
-//       res.render("news", {
-//         title: "Daftar Berita Saat ini",
-//         news: [],
-//       });
-//     });
-// });
 
 //get all news
 router.get("/", function (req, res, next) {
@@ -48,34 +26,6 @@ router.get("/", function (req, res, next) {
       });
     });
 });
-
-// //get detail by query id
-// router.get('/detail', function(req, res, next) {
-//   const id = parseInt(req.query.id);
-
-//   News.findByPk(id)
-//   .then(datadetail => {
-//     if(datadetail) {
-//       res.render('newsDetail', {
-//         title: 'Berita Saat ini',
-//         news: datadetail,
-//        });
-
-//     } else {
-//       // http 404 not found
-//       res.render('newsDetail', {
-//         title: 'Berita Saat ini',
-//         news: {},
-//        });
-//     }
-//   })
-//   .catch(err => {
-//     res.render('newsDetail', {
-//       title: 'Berita Saat ini',
-//       news: {},
-//      });
-//   });
-// });
 
 //detail by params
 router.get("/detail/:id", function (req, res, next) {
@@ -256,5 +206,7 @@ router.get("/delete/:id", auth, function (req, res, next) {
       });
     });
 });
+
+
 
 module.exports = router;
