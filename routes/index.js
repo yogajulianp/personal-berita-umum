@@ -9,7 +9,7 @@ const Op = db.Sequelize.Op;
 
 //addUser
 router.get("/", function (req, res, next) {
-  res.render("news", { pageTitle: "Register" });
+  res.render("news", { pageTitle: "Berita Hari ini" });
 });
 
 

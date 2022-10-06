@@ -59,43 +59,6 @@ router.get("/detail/:id", async function (req, res, next) {
         news: [],
       });
     });
-  // var isiComments = [];
-  // Comments.findAll({
-  //   where: { newsId: id },
-  //   order: [['createAt', 'DESC']]
-  // })
-  // .then(comment => {
-  //   isiComments = comment;
-  //   News.findByPk(id)
-  //   .then((datadetail) => {
-  //     if (datadetail) {
-  //       res.render("newsDetail", {
-  //         pagetitle: "Berita Saat ini",
-  //         news: datadetail,
-  //         comments : isiComments,
-  //       });
-  //     } else {
-  //       // http 404 not found
-  //       res.render("newsDetail", {
-  //         pagetitle: "Berita saat ini",
-  //         news: {},
-  //       });
-  //     }
-  //   })
-  //   .catch((err) => {
-  //     res.json({
-  //       info: "Error",
-  //       message: err.message
-  //     });
-  //   });
-  // })
-  // .catch((err) => {
-  //   res.json({
-  //     info: "Error",
-  //     message: err.message,
-  //     isiComments: isiComments
-  // });
-  // });
 });
 
 //add Komentar
@@ -128,7 +91,6 @@ router.get("/addnews", auth, function (req, res, next) {
     editing: false,
     hasError: false,
     errorMessage: null,
-    // validationErrors: []
   });
 });
 
@@ -151,7 +113,6 @@ router.post("/addnews", auth, function (req, res, next) {
         berita: req.body.berita,
       },
       errorMessage: 'file yang dikirim harus disertai gambar, harus format png/jpeg/jpg',
-      // validationErrors: []
     });
   }
   var image = news.image.path
@@ -221,7 +182,6 @@ router.post("/editnews/:id",auth, function (req, res, next) {
         berita: req.body.berita,
       },
       errorMessage: 'file yang dikirim harus disertai gambar, harus format png/jpeg/jpg',
-      // validationErrors: []
     });
   }
 

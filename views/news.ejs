@@ -7,10 +7,12 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <%news.forEach(function(item) {%>
   <div class="col">
-    <div class="card h-100">
+    <div class="card h-100"> 
+      <a href="/detail/<%=item.id%> " >
       <img src="/<%= item.image %>" class="card-img-top" alt="<%=item.title%>">
+      </a>
       <div class="card-body">
-        <h5 class="card-title"><%=item.title%></h5>
+        <h5  class="card-title"><%=item.title%></h5>
         <p class="card-text"><%=item.berita%></p>
       </div>
       <div class="card-footer">

@@ -37,7 +37,6 @@ const fileFilter = (req, file, cb) => {
 var indexRouter = require("./routes");
 var usersRouter = require("./routes/user");
 var newsRouter = require("./routes/news");
-var commentRouter = require("./routes/comment");
 
 
 var app = express();
@@ -79,7 +78,6 @@ db.sequelize
 app.use("/", newsRouter);
 app.use("/users", usersRouter);
 app.use("/index", indexRouter);
-app.use("/comment", commentRouter);
 
 
 // catch 404 and forward to error handler
