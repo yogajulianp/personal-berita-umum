@@ -2,30 +2,30 @@
 <h1>Berita Portal</h1>
 <br />
 
-<div>
-  <div class="grid text-center">
-    <%news.forEach(function(item) {%>
 
-    <div class="card mb-3" style="width: 24rem;">
-      <div class="card-body" style="max-height:350px; overflow:hidden;">
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <%news.forEach(function(item) {%>
+  <div class="col">
+    <div class="card h-100">
+      <img src="/<%= item.image %>" class="card-img-top" alt="<%=item.title%>">
+      <div class="card-body">
         <h5 class="card-title"><%=item.title%></h5>
-        <img
-          src="/<%= item.image %>"
-          class="card-img-top"
-          alt="<%=item.title%>"
-        />
         <p class="card-text"><%=item.berita%></p>
-        <p class="card-text">
-          <small class="text-muted">Terakhir di update pada <%= item.createdAt.toString().substring(0, 24) %></small>
-        </p>
       </div>
-      &nbsp;
-      <a href="/detail/<%=item.id%> " class="btn btn-info">Detail</a>
+      <div class="card-footer">
+        <small class="text-muted">Terakhir di update pada <%= item.createdAt.toString().substring(0, 24) %></small>
+      </div>
+      <a href="/detail/<%=item.id%> " class="btn btn-info">Baca Selengkapnya</a>
     </div>
-
-    <%} );%>
   </div>
+  <%} );%>
+</div>
+&nbsp;
+&nbsp;
+<div>
   <a href="/addnews" class="btn btn-primary">Add News </a>
 </div>
+
 
 <%- include('templates/footer') -%>

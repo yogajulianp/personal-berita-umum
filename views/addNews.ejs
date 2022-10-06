@@ -4,7 +4,9 @@
 
 <div>
   <% if (errorMessage) { %>
-    <div class="user-message user-message--error"><%= errorMessage %></div>
+    <div class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
   <% } %>
   <form method="POST" action="/addnews" enctype="multipart/form-data">
     <div class="mb-3">

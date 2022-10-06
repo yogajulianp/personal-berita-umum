@@ -2,41 +2,47 @@ var express = require("express");
 var router = express.Router();
 
 const db = require("../models");
+const News = db.news;
 const Comment = db.comments;
 const Op = db.Sequelize.Op;
 
 //get komentar
-router.get("/", function (req, res, next) {
-  Comment.findAll()
+router.get("add/:id", function (req, res, next) {
+  let id = parseInt(req.params.id);
+
+  News.findByPK(id)
     .then((data) => {
-      res.render("commentsCard", {
-        title: "Komentar",
+      res.render("addComments", {
+        pageTitle: "Komentar",
         comments: data,
       });
     })
 
     .catch((err) => {
-      res.render("commentsCard", {
-        title: "Komentar",
+      res.render("newsDetail", {
+        pageTitle: "Komentar",
         comments: [],
       });
     });
 });
 
 //addKomentar
-router.get("/add", function (req, res, next) {
-  res.render("addComments", { title: "Tambah Komentar" });
-});
+// router.get("/add/:id", function (req, res, next) {
+//   res.render("newDetails", { title: "Tambah Komentar" });
+// });
 
 //add Komentar
-router.post("/add", function (req, res, next) {
+router.post("/add/:id", function (req, res, next) {
+  let id = parseInt(req.params.id);
+
   var comments = {
     name: req.body.name,
     comment: req.body.comment,
+    newsId : id,
   };
   Comment.create(comments)
     .then((addData) => {
-      res.redirect("/comments");
+      res.redirect("/detail/" + id);
     })
     .catch((err) => {
       res.json({

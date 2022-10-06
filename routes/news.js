@@ -3,6 +3,7 @@ var router = express.Router();
 
 const db = require("../models");
 const News = db.news;
+const Comments = db.comments;
 const Op = db.Sequelize.Op;
 
 const auth = require("../auth");
@@ -28,31 +29,96 @@ router.get("/", function (req, res, next) {
 });
 
 //detail by params
-router.get("/detail/:id", function (req, res, next) {
+router.get("/detail/:id", async function (req, res, next) {
   const id = parseInt(req.params.id);
 
-  News.findByPk(id)
+  const isiComments = await Comments.findAll({
+    where : {
+      idnews: id
+    }
+  });
+  await News.findByPk(id)
     .then((datadetail) => {
       if (datadetail) {
         res.render("newsDetail", {
           pagetitle: "Berita Saat ini",
           news: datadetail,
+          comments : isiComments
         });
       } else {
         // http 404 not found
         res.render("newsDetail", {
-          pagetitle: "Daftar Produk",
+          pagetitle: "Berita Saat ini",
           news: {},
         });
       }
     })
     .catch((err) => {
       res.render("newsDetail", {
-        pagetitle: "Daftar Produk",
-        news: {},
+        pagetitle: "Berita Saat ini",
+        news: [],
+      });
+    });
+  // var isiComments = [];
+  // Comments.findAll({
+  //   where: { newsId: id },
+  //   order: [['createAt', 'DESC']]
+  // })
+  // .then(comment => {
+  //   isiComments = comment;
+  //   News.findByPk(id)
+  //   .then((datadetail) => {
+  //     if (datadetail) {
+  //       res.render("newsDetail", {
+  //         pagetitle: "Berita Saat ini",
+  //         news: datadetail,
+  //         comments : isiComments,
+  //       });
+  //     } else {
+  //       // http 404 not found
+  //       res.render("newsDetail", {
+  //         pagetitle: "Berita saat ini",
+  //         news: {},
+  //       });
+  //     }
+  //   })
+  //   .catch((err) => {
+  //     res.json({
+  //       info: "Error",
+  //       message: err.message
+  //     });
+  //   });
+  // })
+  // .catch((err) => {
+  //   res.json({
+  //     info: "Error",
+  //     message: err.message,
+  //     isiComments: isiComments
+  // });
+  // });
+});
+
+//add Komentar
+router.post("/addcomments", function (req, res, next) {
+  
+  let comments = {
+    idnews : req.body.idnews,
+    name: req.body.name,
+    comment: req.body.comment
+  };
+  Comments.create(comments)
+    .then((addData) => {
+      res.redirect(`/detail/${req.body.id}`);
+    })
+    .catch((err) => {
+      res.json({
+        info: "Error",
+        message: err.message,
       });
     });
 });
+
+
 
 //add Berita
 router.get("/addnews", auth, function (req, res, next) {

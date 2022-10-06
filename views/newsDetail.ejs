@@ -12,20 +12,94 @@
 
       </div>
       <p class="bg-white"><%=news.berita%></p>
-      <p class="card-text"><small class="text-muted">Terakhir update pada <%= news.createdAt.toString().substring(0, 24) %></small></p>
+      <p class="card-text"><small class="text-muted">Terakhir update pada </small></p>
     </div>
   </div>
 </div>
  
 
 <div>
-  <a href="/" class="btn btn-primary">Back</a>
+  <a href="/" class="btn btn-primary">Kembali </a>
   &nbsp;
   <a href="/editnews/<%=news.id %>"" class="btn btn-secondary">Edit</a>
   &nbsp;
   <a href="/delete/<%=news.id %>" class="btn btn-danger">Delete</a>
-
 </div>
+&nbsp;
+&nbsp;
+&nbsp;
+
+<div class="container" style="background-color: #9cb1bd;">
+  <h1>Komentar</h1>
+  <form method="POST" action="/addcomments">
+    <div class="mb-3">
+        <label for="nama" class="form-label">Nama</label>
+        <input type="text" class="form-control" name="name" id="name"  placeholder="nama Anda">
+      </div>
+    <div class="mb-3">
+      <label for="comment" class="form-label">Isi komentar</label>
+      <input type="text" class="form-control" name="comment" required id="comment"  placeholder="isi komentar">
+    </div>
+    <button  type="submit" class="btn btn-primary">Tambah Komentar</button>
+    &nbsp;
+    &nbsp;
+  </form>
+</div>
+
+
+<!-- 
+ referensi https://mdbootstrap.com/docs/standard/extended/comments/#example2
+--> 
+
+<section style="background-color: #ad655f;">
+
+  <div class="container my-5 py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-12 col-lg-10">
+        <div class="card text-dark">
+
+          <div class="card-body p-4">
+            <h4 class="mb-0">Komentar Saat Ini</h4>
+            <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
+          </div>
+
+          <hr class="my-0" />
+          <%comments.forEach(function(itemComment) {%>
+          <div class="card-body p-4">
+            <div class="d-flex flex-start">
+              <img class="rounded-circle shadow-1-strong me-3"
+                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(33).webp" 
+                alt="avatar" 
+                width="60"
+                height="60" />
+              <div>
+                <h6 class="fw-bold mb-1"><%=itemComment.name%></h6>
+                <div class="d-flex align-items-center mb-3">
+                  <p class="mb-0">
+                    <%= itemComment.createdAt.toString().substring(0, 24) %>
+                    <span class="badge bg-success">Approved</span>
+                  </p>
+                  <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                  <a href="#!" class="text-success"><i class="fas fa-redo-alt ms-2"></i></a>
+                  <a href="#!" class="link-danger"><i class="fas fa-heart ms-2"></i></a>
+                </div>
+                <p class="mb-0">
+                  <%=itemComment.comment%>
+                </p>
+              </div>
+            </div>
+          </div>
+          <%} );%>
+
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
 <%- include('templates/footer') -%>
 
