@@ -108,7 +108,7 @@ router.post("/addcomments", function (req, res, next) {
   };
   Comments.create(comments)
     .then((addData) => {
-      res.redirect(`/detail/${req.body.id}`);
+      res.redirect(`/detail/${req.body.idnews}`);
     })
     .catch((err) => {
       res.json({
